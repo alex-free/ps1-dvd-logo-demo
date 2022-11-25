@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ ! -d ""$(dirname "$0")"/build" ]; then
+    echo "You need to build ps1 dvd logo demo first"
+    return 1
+fi
+
+cd "$(dirname "$0")"/build
+cdrdao write --speed 1 --swap --eject dvd-logo-demo.cue

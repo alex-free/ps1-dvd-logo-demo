@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>ps1 dvd logo demo</title>
+  <style>
+    html {
+      line-height: 1.5;
+      font-family: Georgia, serif;
+      font-size: 20px;
+      color: #FFFFFF;
+      background-color: #000000;
+    }
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      word-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 1em;
+      }
+    }
+    @media print {
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+      p, h2, h3 {
+        orphans: 3;
+        widows: 3;
+      }
+      h2, h3, h4 {
+        page-break-after: avoid;
+      }
+    }
+    p {
+      margin: 1em 0;
+    }
+    a {
+      color: #58D3F7;
+    }
+    a:visited {
+      color: #58D3F7;
+    }
+    img {
+      max-width: 100%;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      margin-top: 1.4em;
+    }
+    h5, h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+    h6 {
+      font-weight: normal;
+    }
+    ol, ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+    li > ol, li > ul {
+      margin-top: 0;
+    }
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+    code {
+      font-family: Menlo, Monaco, 'Lucida Console', Consolas, monospace;
+      font-size: 85%;
+      margin: 0;
+    }
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+    pre code {
+      padding: 0;
+      overflow: visible;
+    }
+    .sourceCode {
+     background-color: transparent;
+     overflow: visible;
+    }
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      border: 2px double blue;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+    table caption {
+      margin-bottom: 0.75em;
+    }
+    tbody {
+      margin-top: 0.5em;
+      border: 2px double blue;
+    }
+    th {
+      border: 2px double blue;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+    td {
+        border: 2px double blue;
+        padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+    #TOC li {
+      list-style: none;
+    }
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header id="title-block-header">
+<h1 class="title">ps1 dvd logo demo</h1>
+</header>
+<h1 id="alex-free.github.io"><a href="https://alex-free.github.io">alex-free.github.io</a></h1>
+<h1 id="ps1-dvd-logo-demo">PS1 DVD Logo Demo</h1>
+<p><em>By Alex Free</em></p>
+<p>PS1 DVD Logo Demo is a small demo for the PlayStation 1 console. It essentially demonstrates the following features/functionality:</p>
+<ul>
+<li>Bounces a large 128x74 DVD logo sprite around a screen (of 320x240p resolution) at 60 FPS.</li>
+<li>The DVD logo sprite can randomly change to 1 of 7 different colors each time the logo bounces off of the screen and changes direction.</li>
+<li>When an exact symmetrical corner hit occurs, an ‘exact corner hit counter’ will appear at the top of the screen after a very brief screen flash of white, as well as a message explaining the controls to dismiss said message. Press <code>DPAD-UP</code> on a controller to dismiss it until the next exact symmetrical corner hit occurs, or press <code>DPAD-DOWN</code> to dismiss it forever. The message explaining the controls will automatically disappear in about 30 seconds after first being displayed if you do nothing. If you do press up or down on your controller, the message explaining the controls will disappear along with the ‘exact corner hit counter’.</li>
+</ul>
+<p>PS1 DVD Player uses 7 different CLUTs (ColorLookUpTables) to change the appearance of the single DVD logo sprite, using barely any VRAM. This demo also does not use the <code>libgs</code> library, making it “more to the metal” and tiny in size. The HBlank root counter is used to seed the random function for selecting each CLUT/color on screen.</p>
+<p><strong>All Japanese and American PS1/PS2 consoles are supported</strong> as they have the NTSC video mode. Everything is currently hard-coded to NTSC 320x240 resolution, and the demo will currently not work on PAL consoles in PAL video mode. PAL consoles with an NTSC video mod would also work.</p>
+<h2 id="external-links">External Links</h2>
+<ul>
+<li><a href="https://alex-free.github.io/ps1-dvd-logo-demo">PS1 DVD Logo Demo Homepage</a></li>
+<li><a href="https://github.com/alex-free/ps1-dvd-logo-demo">PS1 DVD Logo Demo GitHub</a></li>
+<li><a href="https://alex-free.github.io/tonyhax-international">Tonyhax International</a> - A recommended boot method to start the demo on any stock console without required a mod chip to be installed.</li>
+<li><a href="http://www.psxdev.net/forum/viewtopic.php?f=66&amp;t=3966">Stealth ROM</a> - A recommended boot method to start the demo on SCPH-1000-SCPH-7502 stock consoles without require a mod chip to be installed.</li>
+</ul>
+<h2 id="downloads">Downloads</h2>
+<h3 id="version-1.0-11252022">Version 1.0 (11/25/2022)</h3>
+<ul>
+<li><a href="https://github.com/alex-free/ps1-dvd-logo-demo/releases/download/v1.0/ps1-dvd-logo-demo-build-1.0.zip">PS1 DVD Logo Demo</a> <em>BIN+CUE CD image and PS-EXE</em></li>
+<li><a href="https://github.com/alex-free/ps1-dvd-logo-demo/archive/refs/tags/v1.0.zip">Source</a></li>
+</ul>
+<h2 id="building-from-source">Building From Source</h2>
+<p>Requirements</p>
+<ul>
+<li><a href="https://github.com/LameGuy64/psn00bsdk">PSN00BSDK</a></li>
+<li><a href="https://github.com/LameGuy64/mkpsxiso">MKPSXISO</a></li>
+<li><a href="https://github.com/alex-free/timedit">*My TimEdit Fork</a></li>
+<li><a href="https://github.com/alex-free/tonyhax/raw/master/boot-cd/licensej.dat">CD License File: licensej.dat</a> - this must be in the <code>ps1-dvd-logo-demo</code> source directory.</li>
+</ul>
+<p>*<em>Timedit is optional and not required for just building the source. However if you want to mess with the TimEdit project file <code>dvd.tpj</code> to change the TIM image. I Suggest my fork because currently (as of 11/25/2022) the [original TimEdit] doesn’t work on Linux, only Windows. My fork works on both.</em></p>
+<p>After <a href="#downloads">downloading</a> the latest source, <code>cd</code> into <code>ps1-dvd-logo-demo</code> source directory and execute these commands (this is a one-liner):</p>
+<p><code>cmake --preset default . &amp;&amp; cmake --build ./build --clean-first</code></p>
+<h2 id="license">License</h2>
+<p>PS1 DVD Logo Demo is released under the 3-BSD license. See the file <code>license.txt</code> in each release for more info.</p>
+<h2 id="credits">Credits</h2>
+<ul>
+<li><a href="https://lameguy64.net">LameGuy64</a> for <a href="https://github.com/LameGuy64/psn00bsdk">PSN00BSDK</a>, <a href="https://github.com/alex-free/LameGuy64/timedit">TimEdit</a>, <a href="https://github.com/LameGuy64/mkpsxiso">MKPSXISO</a>, and the <a href="http://lameguy64.net/tutorials/pstutorials/">Lameguy’s PlayStation Programming Series</a>. All of which where used to make the demo. I did make a <a href="https://github.com/alex-free/timedit">fork</a> of TimEdit so that I could compile and use it natively on Linux however.</li>
+<li><a href="https://github.com/spicyjpeg">SpicyJPEG</a> for guiding me in the right direction when I encountered a <a href="https://github.com/Lameguy64/PSn00bSDK/issues/66">PSN00BSDK bug</a>.</li>
+<li><a href="https://www.pngfind.com/">Pngfind.com</a> for the <a href="https://www.pngfind.com/mpng/hmTRwb_white-dvd-logo-png-sketch-transparent-png/">DVD logo PNG</a> edited in TimEdit.</li>
+</ul>
+</body>
+</html>
